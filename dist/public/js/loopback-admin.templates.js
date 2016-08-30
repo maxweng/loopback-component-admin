@@ -9,7 +9,7 @@ angular.module('loopback-admin.theme', []).run(['$templateCache', function($temp
     "\n" +
     "    <md-menu>\n" +
     "      <md-button aria-label=\"Open user menu\" class=\"md-primary\" ng-click=\"ctrl.openMenu($mdOpenMenu, $event)\">\n" +
-    "        {{ :: ctrl.auth.currentUserData.username }}\n" +
+    "        {{ :: ctrl.auth.currentUserData.nickname }}\n" +
     "      </md-button>\n" +
     "\n" +
     "      <md-menu-content width=\"4\">\n" +
@@ -138,7 +138,7 @@ angular.module('loopback-admin.theme', []).run(['$templateCache', function($temp
     "\n" +
     "            <label>{{:: 'username' | text }}</label>\r" +
     "\n" +
-    "            <input class=\"username\" type=\"text\" ng-model=\"modal.auth.currentUserData.username\">\r" +
+    "            <input class=\"username\" type=\"text\" ng-model=\"modal.auth.currentUserData.nickname\">\r" +
     "\n" +
     "        </md-input-container>\r" +
     "\n" +
@@ -146,9 +146,9 @@ angular.module('loopback-admin.theme', []).run(['$templateCache', function($temp
     "\n" +
     "        <md-input-container>\r" +
     "\n" +
-    "            <label>{{:: 'firstName' | text }}</label>\r" +
+    "            <label>{{:: 'phone' | text }}</label>\r" +
     "\n" +
-    "            <input type=\"text\" ng-model=\"modal.auth.currentUserData.first_name\">\r" +
+    "            <input type=\"text\" ng-model=\"modal.auth.currentUserData.phone\">\r" +
     "\n" +
     "        </md-input-container>\r" +
     "\n" +
@@ -156,9 +156,19 @@ angular.module('loopback-admin.theme', []).run(['$templateCache', function($temp
     "\n" +
     "        <md-input-container>\r" +
     "\n" +
-    "            <label>{{:: 'lastName' | text }}</label>\r" +
+    "            <label>{{:: 'walletAccount' | text }}</label>\r" +
     "\n" +
-    "            <input type=\"text\" ng-model=\"modal.auth.currentUserData.last_name\">\r" +
+    "            <input type=\"text\" ng-model=\"modal.auth.currentUserData.walletAccount\">\r" +
+    "\n" +
+    "        </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <md-input-container>\r" +
+    "\n" +
+    "            <label>{{:: 'walletBalance' | text }}</label>\r" +
+    "\n" +
+    "            <input type=\"text\" ng-value=\"modal.auth.currentUserData.walletBalance | ether\">\r" +
     "\n" +
     "        </md-input-container>\r" +
     "\n" +

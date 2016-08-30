@@ -355,6 +355,19 @@ angular.module('loopback-admin').provider('stringUtils', function() {
 
 'use strict';
 
+angular.module('loopback-admin').filter('ether', function() {
+  return function(input) {
+    var x;
+    if (input === null) {
+      return input;
+    }
+    x = new BigNumber(input);
+    return x.dividedBy(1e+18);
+  };
+});
+
+'use strict';
+
 angular.module('loopback-admin').filter('numeraljs', function() {
   return function(input, format) {
     if (input === null || format === null) {
@@ -558,6 +571,9 @@ angular.module('loopback-admin').filter('text', ["typedText", "$log", function(t
   avatarAcceptedFormats: 'Accepted formats: png, jpeg.',
   avatarResizeExpl: 'Your avatar will be resized to 200x200 (px) if it\'s bigger then that.',
   view: 'View',
+  phone: 'Phone Number',
+  walletAccount: 'Wallet Account',
+  walletBalance: 'Account Balance',
   genericError: 'something went wrong, please try again later.',
   favoriteExists: 'You have already marked this photo as favorite.',
   passMatches: 'Password is correct.',
@@ -2001,7 +2017,7 @@ angular.module('loopback-admin').controller('transferModel', ["$mdDialog", "$roo
       var message, ref, status;
       ref = response.data.error, status = ref.status, message = ref.message;
       vm.errorMessages = message;
-      return $rootScope.showToast('transferdFailed', message);
+      return $rootScope.showToast(errorMessages, 'warn');
     };
     return model.resource['sendMoney']({
       id: data.id
